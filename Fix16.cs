@@ -523,11 +523,11 @@ namespace FixMath.NET {
             return ToString(CultureInfo.InvariantCulture);
         }
 
-		public string ToString(CultureInfo culture) {
-			// Using Decimal.ToString() instead of float or double because decimal is 
-			// also implemented in software. This guarantees a consistent string representation.
-			return ((decimal)this).ToString(culture);
-		}
+        public string ToString(CultureInfo culture) {
+            // Using Decimal.ToString() instead of float or double because decimal is 
+            // also implemented in software. This guarantees a consistent string representation.
+            return ((decimal)this).ToString(culture);
+        }
 
         public bool Equals(Fix16 other) {
             return m_rawValue == other.m_rawValue;
