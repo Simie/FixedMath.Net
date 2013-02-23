@@ -520,10 +520,14 @@ namespace FixMath.NET {
         }
 
         public override string ToString() {
-            // Using Decimal.ToString() instead of float or double because decimal is 
-            // also implemented in software. This guarantees a consistent string representation.
-            return ((decimal)this).ToString(CultureInfo.InvariantCulture);
+            return ToString(CultureInfo.InvariantCulture);
         }
+
+		public string ToString(CultureInfo culture) {
+			// Using Decimal.ToString() instead of float or double because decimal is 
+			// also implemented in software. This guarantees a consistent string representation.
+			return ((decimal)this).ToString(culture);
+		}
 
         public bool Equals(Fix16 other) {
             return m_rawValue == other.m_rawValue;
