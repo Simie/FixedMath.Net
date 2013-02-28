@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace FixMath.NET {
 
+    [DataContract]
     public partial struct Fix16 : IEquatable<Fix16>, IComparable<Fix16> {
 
+        [DataMember(Name = "FixedValue")]
         readonly int m_rawValue;
         static readonly Fix16[][] Fix16AtanCacheIndex;
         static readonly Fix16[] Fix16AtanCacheValue = new Fix16[4096];
@@ -523,11 +526,11 @@ namespace FixMath.NET {
             return ToString(CultureInfo.InvariantCulture);
         }
 
-		public string ToString(CultureInfo culture) {
-			// Using Decimal.ToString() instead of float or double because decimal is 
-			// also implemented in software. This guarantees a consistent string representation.
-			return ((decimal)this).ToString(culture);
-		}
+        public string ToString(CultureInfo culture) {
+            // Using Decimal.ToString() instead of float or double because decimal is 
+            // also implemented in software. This guarantees a consistent string representation.
+            return ((decimal)this).ToString(culture);
+        }
 
         public bool Equals(Fix16 other) {
             return m_rawValue == other.m_rawValue;
